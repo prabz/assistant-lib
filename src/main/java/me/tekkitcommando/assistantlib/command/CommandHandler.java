@@ -1,17 +1,21 @@
 package me.tekkitcommando.assistantlib.command;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandHandler {
 
-    private List<Command> commands = new ArrayList<>();
+    private Map<String, Command> commands = new HashMap<>();
 
-    public void addCommand(Command command) {
+    public void addCommand(String commandLabel, Command command) {
         if (command != null) {
-            commands.add(command);
+            commands.put(commandLabel, command);
         } else {
             System.out.println("Command is null!");
         }
+    }
+
+    public void handleCommand(String commandLabel, String args[]) {
+        commands.get(commandLabel).executeCommand(commandLabel, args);
     }
 }

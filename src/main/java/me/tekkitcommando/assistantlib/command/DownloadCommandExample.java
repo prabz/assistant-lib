@@ -3,7 +3,7 @@ package me.tekkitcommando.assistantlib.command;
 public class DownloadCommandExample extends Command {
 
     @Override
-    public void onCommand(String command, String[] args) {
+    public void executeCommand(String command, String[] args) {
         if (command.equalsIgnoreCase("download")) {
             if (args.length < 2) {
                 System.out.println("Structure of command is download <fileName> from <serviceName>");

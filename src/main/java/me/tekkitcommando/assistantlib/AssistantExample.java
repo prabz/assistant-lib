@@ -13,6 +13,6 @@ public class AssistantExample {
         // service handler or do something completely custom.
         Assistant assistant = new Assistant("Assistant", new CommandHandler(), new ServiceHandler());
         // Adds the command created with the command api to the list of executors the command handler can call
-        assistant.registerCommand(new DownloadCommandExample());
+        assistant.registerCommand("download", new DownloadCommandExample());
     }
 }

@@ -16,7 +16,7 @@ public class Assistant {
     @Getter
     private final ServiceHandler serviceHandler;
 
-    public void registerCommand(Command command) {
-        commandHandler.addCommand(command);
+    public void registerCommand(String commandLabel, Command command) {
+        commandHandler.addCommand(commandLabel, command);
     }
 }
