@@ -14,5 +14,26 @@ public class AssistantExample {
         Assistant assistant = new Assistant("Assistant", new CommandHandler(), new ServiceHandler());
         // Adds the command created with the command api to the list of executors the command handler can call
         assistant.registerCommand("download", new DownloadCommandExample());
+
+        // The audio recorder will stop listening after 5 seconds and see if the interpreted command is registered
+        Thread stopListening = new Thread(() -> {
+            try {
+                Thread.sleep(5 * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            assistant.stopListening();
+        });
+
+        // Starts the thread
+        stopListening.start();
+        // Starts listening to mic audio for a command
+        assistant.startListening();
+        // Handling the closing of the speech client is up to the lib user
+        try {
+            assistant.getClient().close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
